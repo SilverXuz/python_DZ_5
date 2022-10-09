@@ -57,7 +57,7 @@ if menu == 1:
                 print(f'Игра окончена, победил {p1}!')
         else:
             rate = random.randint(1, 8)
-            print(f'Бот взял {rate} конфет')
+            print(f'Бот взял {rate} конфет(ы)')
             p2 = 0
             p1 = 1
             balance = balance - rate
@@ -160,11 +160,11 @@ elif menu == 3:
             else:
                 rate = 9 - rate1
 
-            print(f'Бот взял {rate} конфет(ы)')
+            print(f'Умный бот взял {rate} конфет(ы)')
             p2 = 0
             p1 = 1
             balance = balance - rate
             print(f'Осталось конфет: {balance}')
             if balance <= 0:
-                p2 = 'бот'
+                p2 = 'умный бот'
                 print(f'Игра окончена, победил {p2}!')
