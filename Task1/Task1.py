@@ -11,42 +11,160 @@ b) Подумайте как наделить бота ""интеллектом"
 
 import random
 
-p1 = random.randint(2, 100)
-print(f'Жребий первого игрока: {p1}')
+balance = 82
+step = 8
+print('1 - против бота')
+print('2 - против игрока')
+print('3 - против умного бота')
+menu = int(input('Против кого хотите играть? Введите число: '))
+while menu < 1 or menu > 3:
+    menu = int(input('Введите число 1, 2 или 3: '))
+if menu == 1:
+    print('Вы играете против бота!')
+    print()
+    p1 = random.randint(2, 100)
+    print(f'Жребий первого игрока: {p1}')
 
-p2 = random.randint(2, 100)
-print(f'Жребий второго игрока {p2}')
+    p2 = random.randint(2, 100)
+    print(f'Жребий бота {p2}')
 
-if p1 > p2:
-    print('Начинает первый игрок!')
-    p1 = 1
-    p2 = 0
-else:
-    print('Начинает второй игрок!')
-    p2 = 1
-    p1 = 0
-
-balance = 100
-while balance > 0:       
-    if p1 == 1:
-        rate = int(input('Первый игрок, сколько конфет хотите взять? - '))
-        while rate < 1 or rate > 28:
-            rate = int(input('Первый игрок, можно взять от 1 до 28 конфет. Сколько конфет хотите взять? - '))
-        p1 = 0
-        p2 = 1
-        balance = balance - rate
-        print(f'Осталось конфет: {balance}')
-        if balance <= 0:
-            p1 = 'первый игрок'
-            print(f'Игра окончена, победил {p1}!')
-    else:
-        rate = int(input('Второй игрок, сколько конфет хотите взять? - '))
-        while rate < 1 or rate > 28:
-            rate = int(input('Второй игрок, можно взять от 1 до 28 конфет. Сколько конфет хотите взять? - '))
-        p2 = 0
+    if p1 > p2:
+        print('Начинает первый игрок!')
         p1 = 1
-        balance = balance - rate
-        print(f'Осталось конфет: {balance}')
-        if balance <= 0:
-            p2 = 'второй игрок'
-            print(f'Игра окончена, победил {p2}!')
+        p2 = 0
+    elif p1 == p2:
+        p1 = random.randint(2, 100)
+        print(f'Жребий первого игрока: {p1}')
+
+        p2 = random.randint(2, 100)
+        print(f'Жребий умного бота {p2}')
+    else:
+        print('Начинает умный бот!')
+        p2 = 1
+        p1 = 0
+
+    while balance > 0:       
+        if p1 == 1:
+            rate = int(input('Первый игрок, сколько конфет хотите взять? - '))
+            while rate < 1 or rate > 8:
+                rate = int(input('Первый игрок, можно взять от 1 до 8 конфет. Сколько конфет хотите взять? - '))
+            p1 = 0
+            p2 = 1
+            balance = balance - rate
+            print(f'Осталось конфет: {balance}')
+            if balance <= 0:
+                p1 = 'первый игрок'
+                print(f'Игра окончена, победил {p1}!')
+        else:
+            rate = random.randint(1, 8)
+            print(f'Бот взял {rate} конфет')
+            p2 = 0
+            p1 = 1
+            balance = balance - rate
+            print(f'Осталось конфет: {balance}')
+            if balance <= 0:
+                p2 = 'бот'
+                print(f'Игра окончена, победил {p2}!')
+
+elif menu == 2:
+    print('Вы играете против игрока!')
+    print()
+    p1 = random.randint(2, 100)
+    print(f'Жребий первого игрока: {p1}')
+
+    p2 = random.randint(2, 100)
+    print(f'Жребий второго игрока {p2}')
+
+    if p1 > p2:
+        print('Начинает первый игрок!')
+        p1 = 1
+        p2 = 0
+    elif p1 == p2:
+        p1 = random.randint(2, 100)
+        print(f'Жребий первого игрока: {p1}')
+
+        p2 = random.randint(2, 100)
+        print(f'Жребий умного бота {p2}')
+    else:
+        print('Начинает умный бот!')
+        p2 = 1
+        p1 = 0
+
+    while balance > 0:       
+        if p1 == 1:
+            rate = int(input('Первый игрок, сколько конфет хотите взять? - '))
+            while rate < 1 or rate > 8:
+                rate = int(input('Первый игрок, можно взять от 1 до 8 конфет. Сколько конфет хотите взять? - '))
+            p1 = 0
+            p2 = 1
+            balance = balance - rate
+            print(f'Осталось конфет: {balance}')
+            if balance <= 0:
+                p1 = 'первый игрок'
+                print(f'Игра окончена, победил {p1}!')
+        else:
+            rate = int(input('Второй игрок, сколько конфет хотите взять? - '))
+            while rate < 1 or rate > 8:
+                rate = int(input('Второй игрок, можно взять от 1 до 8 конфет. Сколько конфет хотите взять? - '))
+            p2 = 0
+            p1 = 1
+            balance = balance - rate
+            print(f'Осталось конфет: {balance}')
+            if balance <= 0:
+                p2 = 'второй игрок'
+                print(f'Игра окончена, победил {p2}!')
+
+elif menu == 3:
+    print('Вы играете против умного бота!')
+    print()
+    p1 = random.randint(2, 100)
+    print(f'Жребий первого игрока: {p1}')
+
+    p2 = random.randint(2, 100)
+    print(f'Жребий умного бота {p2}')
+
+    if p1 > p2:
+        print('Начинает первый игрок!')
+        p1 = 1
+        p2 = 0
+    elif p1 == p2:
+        p1 = random.randint(2, 100)
+        print(f'Жребий первого игрока: {p1}')
+
+        p2 = random.randint(2, 100)
+        print(f'Жребий умного бота {p2}')
+    else:
+        print('Начинает умный бот!')
+        p2 = 1
+        p1 = 0
+
+    rate1 = 1
+    while balance > 0:      
+        if p1 == 1:
+            rate1 = int(input('Первый игрок, сколько конфет хотите взять? - '))
+            while rate1 < 1 or rate1 > 8:
+                rate1 = int(input('Первый игрок, можно взять от 1 до 8 конфет. Сколько конфет хотите взять? - '))
+            p1 = 0
+            p2 = 1
+            balance = balance - rate1
+            print(f'Осталось конфет: {balance}')
+            if balance <= 0:
+                p1 = 'первый игрок'
+                print(f'Игра окончена, победил {p1}!')
+        
+        else:
+            if balance == 82:
+                rate = balance % (step + 1)
+            elif balance <= 8:
+                rate = balance
+            else:
+                rate = 9 - rate1
+
+            print(f'Бот взял {rate} конфет(ы)')
+            p2 = 0
+            p1 = 1
+            balance = balance - rate
+            print(f'Осталось конфет: {balance}')
+            if balance <= 0:
+                p2 = 'бот'
+                print(f'Игра окончена, победил {p2}!')
